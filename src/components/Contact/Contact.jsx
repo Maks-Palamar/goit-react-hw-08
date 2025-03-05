@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 // import { selectContacts } from "../../redux/contactsSlice/contactsSlice";
-import { deleteContact } from "../../redux/contactsOps";
+import { deleteContact } from "../../redux/contacts/operations";
 
 
 const Contact = ({ data }) => {

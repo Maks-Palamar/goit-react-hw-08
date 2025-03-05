@@ -1,6 +1,5 @@
-import { Formik, Form, Field } from 'formik';
-// import searchContact from '../../redux/contactsSlice/contactsSlice';
-import { searchContact, selectFilter } from '../../redux/contactsSlice/filterSlice';
+import { searchContact } from '../../redux/filters/slice';
+import { selectFilter } from '../../redux/filters/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SearchBox = () => {
