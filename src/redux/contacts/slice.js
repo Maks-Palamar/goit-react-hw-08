@@ -9,7 +9,16 @@ export const INITIAL_STATE = {
 	},
   filters: {
 		name: ""
-	}
+	},
+  auth: {
+    user: {
+      name: null,
+      email: null,
+    },
+    token: null,
+    isLoggedIn: false,
+    isRefreshing: false,
+  }
 }
 
 const handlePending = (state) => {

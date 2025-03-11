@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navList {
+
+    
+}
+
+.navItem {
+    list-style: none;
+
+}
