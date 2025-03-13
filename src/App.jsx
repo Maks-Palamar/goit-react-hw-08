@@ -16,35 +16,39 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
 import NotFound from './pages/NotFoundPage/NotFound';
 import Layout from './components/Layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from './redux/auth/operations';
+import { selectIsRefresing } from './redux/auth/selectors';
+import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
 
 
 function App() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getIsError);
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
-    // <>
-    //   <ContactForm  />
-    //   <SearchBox />
-    //   {isLoading && !error && <b>Request in progress...</b>}
-    //   <ContactList  />
-    // </>
+  const isRefreshing = useSelector(selectIsRefresing);
+
+  return isRefreshing ? null : (
 <BrowserRouter>
       <div className="App">
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path='/' element={<Layout />}>
               <Route path="/" element={<HomePage />} />
-              <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="/contacts" element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>} />
             </Route>
               <Route path="/register" element={<RegistrationPage />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="/login" element={<RestrictedRoute component={<LoginPage />} redirectTo='/' />} />
               <Route path="*" element={<NotFound/>} />
           </Routes>
         </Suspense>

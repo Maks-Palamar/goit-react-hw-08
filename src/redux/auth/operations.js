@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const authInstance = axios.create({
+export const authInstance = axios.create({
     baseURL: 'https://connections-api.goit.global/',
 })
 
@@ -19,6 +19,7 @@ export const registerThunk = createAsyncThunk('auth/register', async (body, thun
 })
 
 //mmmpyramid@gmail.com
+//alex112233@mail.com
 
 export const loginThunk = createAsyncThunk('auth/login', async (body, thunkAPI) => {
     try {
@@ -36,5 +37,22 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkAPI) =
         clearAuthHeader();
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);   
+    }
+})
+
+export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+    try {
+        const savedToken = thunkAPI.getState().auth.token;
+        console.log(savedToken);
+        
+        if (savedToken === null) {
+           return thunkAPI.rejectWithValue('Token doesn`t exist');
+        }
+        setAuthHeader(savedToken);
+        const {data} = await authInstance.get('/users/current');
+        return data;
+        
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
 })

@@ -14,7 +14,7 @@ const Navigation = () => {
 
   return (
     <header className={css.header}>
-      {user.name && <> <h3>{user.name}</h3> </>}
+      {user && user.name && <> <h3>{user.name}</h3> </>}
       <nav className={css.nav}>
           <NavLink to="/" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Home</NavLink>
           <NavLink to="/contacts" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Contacts</NavLink>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "../contacts/slice";
-import { registerThunk, loginThunk, logoutThunk } from "./operations";
+import { registerThunk, loginThunk, logoutThunk, refreshUser } from "./operations";
 
 const handlePending = (state) => {
     INITIAL_STATE.contacts.loading = true;
@@ -39,7 +39,24 @@ const authSlice = createSlice({
             })
             // .addCase(loginThunk.rejected, handleRejected)
 
-            .addCase(logoutThunk.fulfilled, () => INITIAL_STATE)
+            .addCase(logoutThunk.fulfilled, (state) => {
+                state.user = null;
+                state.isLoggedIn = false,
+                state.token = null;
+            })
+
+
+            .addCase(refreshUser.pending, state => {
+                state.isRefreshing = true;
+            })
+            .addCase(refreshUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+                state.isLoggedIn = true;
+                state.isRefreshing = false;
+            })
+            .addCase(refreshUser.rejected, state => {
+                state.isRefreshing = false;
+            })
     }
 })
 
