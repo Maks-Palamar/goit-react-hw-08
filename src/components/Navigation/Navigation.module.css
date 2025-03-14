@@ -1,4 +1,4 @@
-.header {
+/* .header {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -20,4 +20,38 @@
 .navItem {
     list-style: none;
 
-}
+} */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+  }
+
+  .navLink {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .navLink:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .navLinkActive {
+    background: rgba(255, 255, 255, 0.4);
+  }

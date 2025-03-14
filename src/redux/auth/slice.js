@@ -2,14 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "../contacts/slice";
 import { registerThunk, loginThunk, logoutThunk, refreshUser } from "./operations";
 
-const handlePending = (state) => {
-    state.loading = true;
-  };
-  
-  const handleRejected = (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  };
 
 const authSlice = createSlice({
     name: 'auth',
@@ -17,27 +9,25 @@ const authSlice = createSlice({
     extraReducers: builder => {
         builder 
 
-            .addCase(registerThunk.pending, handlePending)
+            // .addCase(registerThunk.pending, handlePending)
             .addCase(registerThunk.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.token = action.payload.token;
                 state.isLoggedIn = true;
-                state.error = null;
-                state.loading = false;
             })
-            .addCase(registerThunk.rejected, handleRejected)
+            // .addCase(registerThunk.rejected, handleRejected)
 
             //-------------------------------
 
-            .addCase(loginThunk.pending, handlePending)
+            // .addCase(loginThunk.pending, handlePending)
             .addCase(loginThunk.fulfilled, (state, action) => {
                 state.user = action.payload.user;
                 state.token = action.payload.token;
                 state.isLoggedIn = true;
-                state.error = null;
-                state.loading = false;
             })
-            .addCase(loginThunk.rejected, handleRejected)
+            // .addCase(loginThunk.rejected, handleRejected)
+
+            //-------------------------------
 
             .addCase(logoutThunk.fulfilled, () => INITIAL_STATE.auth
                 // state.user = null;
@@ -45,6 +35,7 @@ const authSlice = createSlice({
                 // state.token = null;
             )
 
+            //-------------------------------
 
             .addCase(refreshUser.pending, state => {
                 state.isRefreshing = true;

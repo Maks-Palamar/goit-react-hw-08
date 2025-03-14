@@ -15,17 +15,17 @@ const Navigation = () => {
   return (
     <header className={css.header}>
       {user && user.name && <> <h3>{user.name}</h3> </>}
-      <nav className={css.nav}>
+      {/* <nav className={css.nav}> */}
           <NavLink to="/" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Home</NavLink>
           <NavLink to="/contacts" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Contacts</NavLink>
           {!isLoggedIn && <>
-            <NavLink to="/register" className={({isActive}) => clsx(css.navLink2, {[css.navLinkActive2]: isActive,})}>Register</NavLink>
+            <NavLink to="/register" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Register</NavLink>
             <NavLink to="/login" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Login</NavLink>
           </>}
           {isLoggedIn && <>
             <button onClick={() => dispatch(logoutThunk())}>Logout</button>
           </>}
-      </nav>
+      {/* </nav> */}
     </header>
   )
 }

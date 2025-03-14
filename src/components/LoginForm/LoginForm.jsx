@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
+import css from './LoginForm.module.css'
 
 const LoginForm = () => {
 
@@ -13,15 +14,13 @@ const LoginForm = () => {
         actions.resetForm();
     }
   return (
-    <div>
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-            <Form>
-                <Field type='email' name='email'/>
-                <Field type='text' name='password'/>
-                <button type='submit'>Login</button>
+            <Form className={css.loginForm}>
+                <Field type='email' name='email' className={css.loginField} />
+                <Field type='text' name='password' className={css.loginField} />
+                <button type='submit' className={css.loginBtn}>Login</button>
             </Form>
          </Formik>
-    </div>
   )
 }
 
