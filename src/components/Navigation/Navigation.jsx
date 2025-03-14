@@ -23,7 +23,7 @@ const Navigation = () => {
             <NavLink to="/login" className={({isActive}) => clsx(css.navLink, {[css.navLinkActive]: isActive,})}>Login</NavLink>
           </>}
           {isLoggedIn && <>
-            <button onClick={() => dispatch(logoutThunk())}>Logout</button>
+            <button className={css.logoutBtn} onClick={() => dispatch(logoutThunk())}>Logout</button>
           </>}
       {/* </nav> */}
     </header>

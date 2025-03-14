@@ -1,14 +1,23 @@
 .contForm {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: stretch;
+    flex-direction: row;
     gap: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    width: 420px;
+    margin: 0 auto;
+    gap: 0;
+    height: 80px;
 }
 
 .allFields {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: stretch;
 }
 
 .fieldContainer {
@@ -17,9 +26,36 @@
     position: relative;
 }
 
+/* .btnWrap {
+    height: 100%;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.104);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+} */
+
 .formbutton {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    border-width: 0;
+    /* width: 100%;
+    height: 100%; */
+    background-color: rgba(255, 255, 255, 0.104);
+    /* background: none; */
+    height: 100%;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.formbutton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .fieldName {
@@ -33,4 +69,27 @@
     bottom: -20px;
     left: 50%;
     transform: translate(-50%, 0);
+    left: -20px;
+    width: 30px;
+}
+
+.field {
+    /* width: 100%; */
+    height: 100%;
+    padding: 4px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 10px;
+    /* background: rgba(255, 255, 255, 0.3); */
+    background: none;
+    color: white;
+    font-size: 16px;
+    /* text-align: center; */
+    border-bottom: 5px black;
+    
+    scroll-behavior: unset;
+}
+
+.field::placeholder {
+    color: white;
 }

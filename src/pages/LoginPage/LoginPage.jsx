@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { loginThunk } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import css from './LoginPage.module.css'
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -25,16 +26,18 @@ const handleSubmit = (values, actions) => {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
-          <label>
-            <span>Email:</span>
-            <Field name='email' />
+        <Form className={css.logForm}>
+          <h1 className={css.logFormHeader}>Login</h1>
+          <label className={css.logFormLabel}>
+            <span className={css.logFormSpan}>Email:</span>
+            <Field className={css.logFormInp} name='email' placeholder='your@mail.com' />
           </label>
-          <label>
-            <span>Password:</span>
-            <Field name='password' type='password' />
+          <label className={css.logFormLabel}>
+            <span className={css.logFormSpan}>Password:</span>
+            <Field className={css.logFormInp} name='password' type='password' placeholder='password' />
           </label>
-          <button type='submit'>Login</button>
+          <button className={css.logFormBtn} type='submit'>Login</button>
+          <p className={css.logFormText}>Don`t have account yet? <span className={css.textSpan} onClick={() => navigate('/register')}>Register</span></p>
         </Form>
       </Formik>
     </div>

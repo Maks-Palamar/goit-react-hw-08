@@ -55,3 +55,19 @@ header {
   .navLinkActive {
     background: rgba(255, 255, 255, 0.4);
   }
+
+  .logoutBtn {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    background: rgba(50, 50, 50, 0.3);
+    border: none;
+    cursor: pointer;
+  }
+
+  .logoutBtn:hover {
+    background: rgba(50, 50, 50, 0.5);
+
+  }
