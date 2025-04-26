@@ -36,7 +36,6 @@ function App() {
   const isRefreshing = useSelector(selectIsRefresing);
 
   return isRefreshing ? null : (
-<BrowserRouter>
       <div className="App">
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -53,7 +52,6 @@ function App() {
           </Routes>
         </Suspense>
       </div>
-</BrowserRouter>
   )
 }
 
